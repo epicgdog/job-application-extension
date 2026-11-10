@@ -13,7 +13,7 @@ LIB=json.loads((ROOT/'examples/resume-library.json').read_text())
 JOB={'title':'Backend engineer','company':'Fixture company','url':'https://example.com/jobs/backend','description':'Build Python FastAPI services and REST APIs with SQL, SQLite and PostgreSQL. Deploy Docker containers on AWS EC2 and S3 using Jenkins and GitHub Actions. Design schemas and reliable data pipelines and implement authentication and CI.'}
 
 def config(directory):
-    return {'local':True,'host':'127.0.0.1','port':0,'data':Path(directory),'library':ROOT/'examples/resume-library.json','profile':ROOT/'examples/profile.json','master':ROOT/'private-data/master.pdf','origins':['chrome-extension://fixture']}
+    return {'local':True,'host':'127.0.0.1','port':0,'data':Path(directory),'library':ROOT/'examples/resume-library.json','profile':ROOT/'examples/profile.json','master':Path(directory)/'no-original.pdf','origins':['chrome-extension://fixture']}
 
 class RendererTests(unittest.TestCase):
     def test_source_integrity_and_preservation(self):
