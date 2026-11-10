@@ -1,12 +1,36 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApplyFlow</title><link rel="stylesheet" href="ui.css"></head>
-<body class="popup"><header><div class="brand"><span class="mark">af</span>ApplyFlow</div><button id="profile" class="quiet">Edit profile ↗</button></header>
-<div class="eyebrow">Your next chapter</div><h1>Less typing.<br>More possibilities.</h1><p>Bring your profile to your next application.</p>
+<body class="popup"><header><div class="brand"><span class="mark">af</span>ApplyFlow</div><button id="profile" class="quiet">Edit profile ↗</button></header><section class="card" id="resume-card">
+  <div class="eyebrow">Your resume, matched to this job</div>
+  <h2 style="margin-top:7px">One page. Your exact words.</h2>
+  <p class="muted" id="mode-label">Connecting to your resume library…</p>
+  <div id="auth-panel" hidden>
+    <label>Email<input id="auth-email" type="email" autocomplete="email"></label>
+    <div class="toolbar" style="margin:10px 0"><button id="send-code" class="secondary">Send sign-in code</button></div>
+    <label>Email code<input id="auth-code" inputmode="numeric" autocomplete="one-time-code"></label>
+    <button id="verify-code" style="margin-top:10px">Sign in</button>
+  </div>
+  <div id="job-editor" hidden>
+    <label>Job title<input id="job-title" maxlength="250"></label>
+    <label style="margin-top:10px">Company<input id="job-company" maxlength="250"></label>
+    <details id="job-details" style="margin:12px 0"><summary>Review job description</summary>
+      <label style="margin-top:10px">Job description<textarea id="job-description" maxlength="40000" style="min-height:140px"></textarea></label>
+    </details>
+    <div class="toolbar"><button id="generate-resume">Generate resume</button><button id="detect-job" class="secondary">Read page</button></div>
+  </div>
+  <div id="resume-status" class="status" role="status" aria-live="polite"></div>
+  <div id="resume-result" hidden><div id="resume-entries" class="muted"></div><div class="toolbar" style="margin-top:12px"><button id="view-resume">Preview & download</button><button id="regenerate" class="secondary">Regenerate</button></div></div>
+  <details id="resume-history"><summary>Resume history</summary><div id="history-list" class="muted" style="margin-top:12px"></div><button id="refresh-history" class="quiet">Refresh history</button></details>
+  <button id="sign-out" class="quiet" hidden>Sign out</button>
+</section>
+<div class="eyebrow">Application autofill</div><h1>Fill application fields</h1><p>Bring your profile to your next application.</p>
 <div class="toolbar"><button id="scan">Scan this page</button><button id="demo" class="secondary">Try demo</button></div>
 <div id="status" class="status" role="status" aria-live="polite">Save your profile, then open an application to begin.</div>
 <section id="preview" hidden><div class="toolbar"><h2 id="count">Review matches</h2><button id="toggle" class="quiet">Deselect all</button></div>
 <p class="muted">Check each match. You can change which saved detail fills a field.</p>
 <div id="fields" class="card"></div><label class="check"><input type="checkbox" id="overwrite">Replace existing field values</label>
 <button id="fill" style="width:100%;margin-top:14px">Fill selected fields</button></section>
+
+
 <footer>Profile stored locally · Runs when you click<br>Review the application and submit it yourself.</footer>
-<script src="schema.js"></script><script src="engine.js"></script><script src="popup.js"></script></body></html>
+<script src="schema.js"></script><script src="engine.js"></script><script src="popup.js"></script><script src="resumes.js"></script></body></html>
