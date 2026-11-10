@@ -1,0 +1,28 @@
+{
+  "format": "applyflow",
+  "version": 1,
+  "profile": {
+    "firstName": "Alex",
+    "lastName": "Example",
+    "fullName": "Alex Example",
+    "email": "alex@example.com",
+    "phone": "202-555-0100",
+    "address": "",
+    "address2": "",
+    "city": "",
+    "state": "",
+    "postalCode": "",
+    "country": "",
+    "linkedin": "https://www.linkedin.com/in/example",
+    "github": "https://github.com/example",
+    "website": "https://example.com",
+    "employer": "Example Systems",
+    "jobTitle": "Backend Developer",
+    "school": "Example University",
+    "degree": "B.S.",
+    "fieldOfStudy": "Computer Science",
+    "graduationYear": "2028",
+    "summary": "",
+    "answers": []
+  }
+}

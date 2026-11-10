@@ -1,0 +1,405 @@
+{
+  "format": "applyflow-resume-library",
+  "version": 1,
+  "fixture_notice": "Entirely fictional example data for setup and automated tests. Replace with your own verified source library.",
+  "source": {
+    "filename": "synthetic-example",
+    "sha256": "ddd6388f077c547b90a8e0213d6e299d1e95a0f27b598a69c2944a4345e3fce3",
+    "page_count": 0
+  },
+  "contact": {
+    "fullName": "Alex Example",
+    "email": "alex@example.com",
+    "phone": "202-555-0100",
+    "linkedin": "https://www.linkedin.com/in/example",
+    "website": "https://example.com",
+    "github": "https://github.com/example"
+  },
+  "education": [
+    {
+      "school": "Example University",
+      "degree_display": "B.S. Computer Science",
+      "graduation_display": "May 2028",
+      "gpa_display": "3.50",
+      "location": "Example City",
+      "coursework_bullet": {
+        "text": "Relevant Coursework: Algorithms, Database Systems",
+        "sha256": "7a4c2022b19167f7e3aab907f98f1411ed98541986cbd24fcb4fc2e5058e8e14"
+      }
+    }
+  ],
+  "skills": {
+    "Languages": "Python, SQL, JavaScript, TypeScript",
+    "Backend/Databases": "FastAPI, PostgreSQL, SQLite",
+    "Frontend": "React, HTML, CSS",
+    "Cloud/DevOps": "AWS (EC2, S3), Docker, Jenkins, GitHub Actions"
+  },
+  "entries": [
+    {
+      "id": "entry-01",
+      "kind": "experience",
+      "title": "Backend Developer",
+      "organization": "Example Systems",
+      "location": "Example City",
+      "dates_display": "May 2025 \u2013 Aug 2026",
+      "bullets": [
+        {
+          "id": "entry-01-bullet-01",
+          "text": "Implemented a Python FastAPI inventory API with PostgreSQL transactions and explicit request validation for a fictional warehouse demonstration.",
+          "sha256": "ecc3cad3dacd5edd415ca7621cccd0af313068fc8e5bbbd46543ebc41373872a"
+        },
+        {
+          "id": "entry-01-bullet-02",
+          "text": "Created repeatable SQL migrations and containerized the API with Docker for independent local integration testing.",
+          "sha256": "b4d238ef2d1394c6b4e0d4105e137fc3891f23c6fbdf89708df0e17b90d5b55e"
+        },
+        {
+          "id": "entry-01-bullet-03",
+          "text": "Added authentication checks and a Jenkins pipeline that runs backend tests before preparing a release artifact.",
+          "sha256": "cd4c8f9d26c7fc35ade543d49714ab7b48173702ccf765fdfd258fcf20822a29"
+        }
+      ]
+    },
+    {
+      "id": "entry-02",
+      "kind": "experience",
+      "title": "Frontend Developer",
+      "organization": "Sample Studio",
+      "location": "Example City",
+      "dates_display": "May 2024 \u2013 Aug 2025",
+      "bullets": [
+        {
+          "id": "entry-02-bullet-01",
+          "text": "Created a TypeScript React interface with reusable form controls and accessible error messages for a sample scheduling application.",
+          "sha256": "f867a708569779dc6204b5043b0a5819b6234ad0c73211d1edd9de71318cc484"
+        },
+        {
+          "id": "entry-02-bullet-02",
+          "text": "Implemented browser navigation and client state synchronization across independently loaded dashboard panels.",
+          "sha256": "8190eb9010c11c5377c09e3131583baa8ec1393bf52fcc7ae83771faaa9818ba"
+        },
+        {
+          "id": "entry-02-bullet-03",
+          "text": "Added interface tests that verify keyboard navigation, responsive layouts, and recovery from simulated API failures.",
+          "sha256": "6845af65377911dce6dd262874eaf7d14feddde3de97cedf99aa55babdf0f40e"
+        }
+      ]
+    },
+    {
+      "id": "entry-03",
+      "kind": "experience",
+      "title": "Platform Intern",
+      "organization": "Demo Infrastructure",
+      "location": "Example City",
+      "dates_display": "May 2023 \u2013 Aug 2024",
+      "bullets": [
+        {
+          "id": "entry-03-bullet-01",
+          "text": "Built an AWS EC2 deployment demonstration using Docker containers and an S3 bucket for static application assets.",
+          "sha256": "5596b2830005016665bcf3283e912091090519837831ed36df234ef659da8ef7"
+        },
+        {
+          "id": "entry-03-bullet-02",
+          "text": "Configured GitHub Actions to run service tests and document deployment parameters in a reproducible CI workflow.",
+          "sha256": "64d81d688b778ccc7a9e239e5d20f7bec7611669a7eb45cde79aefe71f5b4c8e"
+        },
+        {
+          "id": "entry-03-bullet-03",
+          "text": "Added structured logging and health checks to distinguish application errors from unavailable backend dependencies.",
+          "sha256": "d1bfe22b9b36889122fd803bdccad39857781606bc535be2c6fd3d8ca69ed55f"
+        }
+      ]
+    },
+    {
+      "id": "entry-04",
+      "kind": "experience",
+      "title": "Student Tutor",
+      "organization": "Example Learning Center",
+      "location": "Example City",
+      "dates_display": "May 2022 \u2013 Aug 2023",
+      "bullets": [
+        {
+          "id": "entry-04-bullet-01",
+          "text": "Prepared small Python exercises that demonstrate recursion, graph traversal, and SQL query construction for practice sessions.",
+          "sha256": "13d7ae2d1b7c1d2423fd284521789c81dd3e28e3555b30f2aede449976bdd6c7"
+        },
+        {
+          "id": "entry-04-bullet-02",
+          "text": "Reviewed example database designs and explained the consequences of missing constraints using synthetic records.",
+          "sha256": "62bac6d332d0e6beffd7329e0ccafe784b5b94081f4ac1426f121ede07a0122b"
+        },
+        {
+          "id": "entry-04-bullet-03",
+          "text": "Organized written study notes so students could compare alternative algorithms and test their own implementations.",
+          "sha256": "fecdd2c7a348694f9c24172415c04110a14aea992a7f64e2678fdc353a864bce"
+        }
+      ]
+    },
+    {
+      "id": "entry-05",
+      "kind": "experience",
+      "title": "Game Workshop Instructor",
+      "organization": "Sample Camp",
+      "location": "Example City",
+      "dates_display": "May 2021 \u2013 Aug 2022",
+      "bullets": [
+        {
+          "id": "entry-05-bullet-01",
+          "text": "Prepared a LuaU workshop where students build small Roblox games using checkpoints and reusable player interactions.",
+          "sha256": "294c25df07fdc13dccedefff21650961c33cacbf3013ebbfd56aa26789b9c38e"
+        },
+        {
+          "id": "entry-05-bullet-02",
+          "text": "Explained debugging techniques with isolated game scripts and repeatable examples of client and server state.",
+          "sha256": "7216c204428c1b25ef23006dbce8a8774111741d0a0806a212d15f875b2aa511"
+        },
+        {
+          "id": "entry-05-bullet-03",
+          "text": "Reviewed completed mini games and documented optional exercises for students practicing independently after the workshop.",
+          "sha256": "289b02cb51d7083e1088d519edb0089dbecf43ced113e435e544f2100ad28e20"
+        }
+      ]
+    },
+    {
+      "id": "entry-06",
+      "kind": "experience",
+      "title": "Game Systems Developer",
+      "organization": "Demo Games",
+      "location": "Example City",
+      "dates_display": "May 2020 \u2013 Aug 2021",
+      "bullets": [
+        {
+          "id": "entry-06-bullet-01",
+          "text": "Implemented a Roblox LuaU NPC demonstration with pathfinding and configurable agents in a synthetic game environment.",
+          "sha256": "0d7648e42ef3f7610fb1dd465f0890718b3f4b62a119ff06c1735a11cac8f167"
+        },
+        {
+          "id": "entry-06-bullet-02",
+          "text": "Created an FPS raycasting prototype to study hit registration and client side rendering under simulated network conditions.",
+          "sha256": "dc4f51f92df031f8c3edfd73575e48a87718c5c7f462da5047bdf533225240c8"
+        },
+        {
+          "id": "entry-06-bullet-03",
+          "text": "Documented a game profiling workflow that compares agent updates and validates predictable behavior during gameplay.",
+          "sha256": "75c68963b1eec7936cb1877b161aff6e6a7ea18af47305f2adc96a324a2374fd"
+        }
+      ]
+    },
+    {
+      "id": "entry-07",
+      "kind": "project",
+      "name": "API Workbench",
+      "technologies_display": "Python, FastAPI, PostgreSQL, Docker",
+      "url": "https://example.com/projects/7",
+      "bullets": [
+        {
+          "id": "entry-07-bullet-01",
+          "text": "Implemented a Python FastAPI service demonstrating authenticated REST endpoints and PostgreSQL queries over generated sample records.",
+          "sha256": "ae90bc0cca58092573272ec79c9d3f045296749b65072d89e55b1f0ad9d6243a"
+        },
+        {
+          "id": "entry-07-bullet-02",
+          "text": "API Workbench: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "230582d67c4f5d399344d542f7198600a131ed4cf940c7e3b6652f57564ae5af"
+        },
+        {
+          "id": "entry-07-bullet-03",
+          "text": "API Workbench: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "d496b221b4fe8cf014fef063977eee8fb60f47701619dffdd6aed65916ae5fa4"
+        }
+      ]
+    },
+    {
+      "id": "entry-08",
+      "kind": "project",
+      "name": "Course Planner Demo",
+      "technologies_display": "Python, SQLite, React, AWS",
+      "url": "https://example.com/projects/8",
+      "bullets": [
+        {
+          "id": "entry-08-bullet-01",
+          "text": "Created a SQLite graph example with a Python API and React interface to explore prerequisite relationships in synthetic courses.",
+          "sha256": "1a2a6faabb6e012477282faee948da04b2b01917c1083ca625d5f97e12eb7394"
+        },
+        {
+          "id": "entry-08-bullet-02",
+          "text": "Course Planner Demo: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "3d3da40090a42509444df1ca7bb9092a2f08c67fc79d9a6b39a275b2fa2f6596"
+        },
+        {
+          "id": "entry-08-bullet-03",
+          "text": "Course Planner Demo: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "c9ba39e7f8c4b71dc99a953cb50cb24e9d644452308f1803cdd80aa95dc33f75"
+        }
+      ]
+    },
+    {
+      "id": "entry-09",
+      "kind": "project",
+      "name": "Stream Metrics Lab",
+      "technologies_display": "Python, SQL, AWS",
+      "url": "https://example.com/projects/9",
+      "bullets": [
+        {
+          "id": "entry-09-bullet-01",
+          "text": "Built a Python data pipeline that batches generated stream events and computes SQL summaries for a demonstration dashboard.",
+          "sha256": "008d7c383f884647ec84c4b042670944fb2c71e3a8fd591ba5871cd2d3963851"
+        },
+        {
+          "id": "entry-09-bullet-02",
+          "text": "Stream Metrics Lab: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "74b98258ff6d7c02672968998164433c98346d93adc7871654db91c1ffd55a3d"
+        },
+        {
+          "id": "entry-09-bullet-03",
+          "text": "Stream Metrics Lab: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "c1b0e02f5f4fe771f9d11518a66cda87cfb95e92cf16ff456c05428094918e25"
+        }
+      ]
+    },
+    {
+      "id": "entry-10",
+      "kind": "project",
+      "name": "Agent Test Bench",
+      "technologies_display": "Python, FastAPI, GitHub Actions",
+      "url": "https://example.com/projects/10",
+      "bullets": [
+        {
+          "id": "entry-10-bullet-01",
+          "text": "Created an API test harness with deterministic fixtures and GitHub Actions jobs for checking generated agent responses.",
+          "sha256": "e1e8f97d65b4b395e6fdbfec66cb4b6d750edc8ceee907ef28fb76d7a969af45"
+        },
+        {
+          "id": "entry-10-bullet-02",
+          "text": "Agent Test Bench: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "fc9bba54813058313de81d8cf45e8bb8460265e8a25d99a5ea5ccf4700cf1b2b"
+        },
+        {
+          "id": "entry-10-bullet-03",
+          "text": "Agent Test Bench: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "e1ddc3f4b9d916f9bfd19d1c3d7dcbea2204d2289890b6bf5b9dcffe77602fc2"
+        }
+      ]
+    },
+    {
+      "id": "entry-11",
+      "kind": "project",
+      "name": "Contact Pipeline Demo",
+      "technologies_display": "Python, TypeScript, PostgreSQL",
+      "url": "https://example.com/projects/11",
+      "bullets": [
+        {
+          "id": "entry-11-bullet-01",
+          "text": "Implemented a staged Python ingestion process that validates fictional contact records before storing them in PostgreSQL.",
+          "sha256": "269182e0c5c850cef6789d8d381bd0234bd653fbf65f824da6797a39c435e904"
+        },
+        {
+          "id": "entry-11-bullet-02",
+          "text": "Contact Pipeline Demo: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "071297dd407987164faac7f0568015df80afb37b0cd70ff699552fb9c1c430e6"
+        },
+        {
+          "id": "entry-11-bullet-03",
+          "text": "Contact Pipeline Demo: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "dfd28d98142dffbbac85f448876831c166b3aa6fa0ee586104c2f401a76666c6"
+        }
+      ]
+    },
+    {
+      "id": "entry-12",
+      "kind": "project",
+      "name": "Caption Console",
+      "technologies_display": "Python, FastAPI, WebSockets",
+      "url": "https://example.com/projects/12",
+      "bullets": [
+        {
+          "id": "entry-12-bullet-01",
+          "text": "Built a FastAPI WebSockets demonstration that streams synthetic captions and displays connection status in a web interface.",
+          "sha256": "3bb965eabbc8cfce40d56e496cfe72b72c9158a2720dc84dde7f6efb767aabd0"
+        },
+        {
+          "id": "entry-12-bullet-02",
+          "text": "Caption Console: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "b51533d03fcde024877b1af8f2bfb2f6e688fe693be37ebd549d1a79a12f335e"
+        },
+        {
+          "id": "entry-12-bullet-03",
+          "text": "Caption Console: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "62cc2fdc83ff0ba0dd2be0632c59de418cc9d28aafbcf6e5fdd4fb3f94db6893"
+        }
+      ]
+    },
+    {
+      "id": "entry-13",
+      "kind": "project",
+      "name": "Map Resource Viewer",
+      "technologies_display": "TypeScript, React, Mapbox",
+      "url": "https://example.com/projects/13",
+      "bullets": [
+        {
+          "id": "entry-13-bullet-01",
+          "text": "Created a React map showing synthetic resource locations with TypeScript filters and a compact detail panel.",
+          "sha256": "11520ab06565c16ec176f36faf627feb01b72700c4a2a3a5ebd1054619578618"
+        },
+        {
+          "id": "entry-13-bullet-02",
+          "text": "Map Resource Viewer: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "e862c5fcdf34a57bd5e9d4daae3cdf12a666b9e775e64d4b1968ac361e116aca"
+        },
+        {
+          "id": "entry-13-bullet-03",
+          "text": "Map Resource Viewer: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "c3ff560a9721430c6aac9f3c1e15b1e0bcb78499944116ec11980d60e6e2c48e"
+        }
+      ]
+    },
+    {
+      "id": "entry-14",
+      "kind": "project",
+      "name": "Document Catalog",
+      "technologies_display": "Python, FastAPI, Supabase, React",
+      "url": "https://example.com/projects/14",
+      "bullets": [
+        {
+          "id": "entry-14-bullet-01",
+          "text": "Developed a sample document catalog with a FastAPI backend, React frontend, and private Supabase storage policies.",
+          "sha256": "cfc12f2754de5909fc39eccc5cea1aa20b116b7fe77d33fb478ddbdce8bcdbd6"
+        },
+        {
+          "id": "entry-14-bullet-02",
+          "text": "Document Catalog: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "3821ba885e32bb2430e783bb799e37a99046364b7fa470c9b74e886a3c6b4c7f"
+        },
+        {
+          "id": "entry-14-bullet-03",
+          "text": "Document Catalog: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "5e3845a162ca324caeefd5827bb0e14e25195c747a439ec5835828b3c1e494b0"
+        }
+      ]
+    },
+    {
+      "id": "entry-15",
+      "kind": "project",
+      "name": "Grid Simulation",
+      "technologies_display": "TypeScript, React, Python",
+      "url": "https://example.com/projects/15",
+      "bullets": [
+        {
+          "id": "entry-15-bullet-01",
+          "text": "Created a TypeScript simulation that displays generated equipment events and compares recovery strategies using a React interface.",
+          "sha256": "38888d7f9e27487830633aa54f2785489805a24fe5de59af08fe6923232d5d57"
+        },
+        {
+          "id": "entry-15-bullet-02",
+          "text": "Grid Simulation: Added repeatable checks using generated inputs so the demonstration can be run without any private accounts or production data.",
+          "sha256": "ecd42f0d9da5562ad93871f3dc7138d9bb7f72f0f39d0d45d649b8c3981e7811"
+        },
+        {
+          "id": "entry-15-bullet-03",
+          "text": "Grid Simulation: Documented setup steps and failure scenarios to make the example reproducible on a separate development machine.",
+          "sha256": "e259b4a2f1674092da5aa4f841b653d51c07de069a264356b36dea8e882cbff6"
+        }
+      ]
+    }
+  ]
+}
