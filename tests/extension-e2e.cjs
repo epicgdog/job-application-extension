@@ -33,6 +33,12 @@ function check(condition,message){assert.ok(condition,message);tests.push(messag
   check((await popup.locator('#resume-status').innerText()).includes('Saved locally'),'Activation detects job and generates a verified resume');
   check(await popup.locator('#job-title').inputValue()==='Backend Engineer','Reads JobPosting structured title');
   check(await popup.locator('#job-company').inputValue()==='Fixture Company','Reads structured company');
+  check((await popup.locator('#job-description').inputValue()).includes('Qualifications\n'),'Preserves qualification heading/list boundaries');
+  check((await popup.locator('#job-description').inputValue()).includes('Experience building Python FastAPI'),'Keeps inline bold skill names inside their qualification');
+  check(await popup.locator('#qualification-report h3').allTextContents().then(t=>t.includes('Required qualifications')&&t.includes('Preferred qualifications')),'Shows separate required and preferred evidence reports');
+  check(!(await popup.locator('#resume-result').innerText()).includes('Matched:'),'Removes generic word-overlap display');
+  await popup.locator('.qualification').first().evaluate(el=>el.open=true);
+  check(await popup.locator('.qualification-proof blockquote').count()>0,'Shows exact original source evidence for qualifications');
   const profile=await worker.evaluate(async()=>(await chrome.storage.local.get('profile')).profile);
   check(profile.firstName==='Alex','Bootstraps example autofill profile');
   await popup.locator('#scan').click();await popup.waitForFunction(()=>document.querySelector('#count').textContent.includes('4 fields'));

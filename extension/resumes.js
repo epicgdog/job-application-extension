@@ -18,8 +18,8 @@
     const complete=row.state==='complete';lastFailed=row.state==='failed';
     el('generate-resume').textContent=lastFailed?'Retry generation':'Generate resume';el('resume-result').hidden=!complete;
     if(complete){
-      const terms=(row.result?.ranking||[]).filter(r=>row.result.selected_entry_ids.includes(r.id)).flatMap(r=>r.matched_terms).filter((v,i,a)=>a.indexOf(v)===i).slice(0,12);
-      el('resume-entries').textContent=(row.result?.selected_entries||[]).map(e=>e.name).join(' · ')+'\nMatched: '+terms.join(', ');
+      el('resume-entries').textContent=(row.result?.selected_entries||[]).map(e=>e.name).join(' · ');
+      ApplyFlowQualifications.render(el('qualification-report'),row.result?.qualification_report);
       say(`One page verified. ${el('mode-label').dataset.local==='true'?'Saved locally on this computer.':'Saved privately in Supabase.'} Original bullets preserved.`);
       lock(false);loadHistory();
     }else if(row.state==='failed'){say(row.error||'Generation failed. Retry using Generate resume.',true);lock(false);}

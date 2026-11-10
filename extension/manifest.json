@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ApplyFlow \u2014 Autofill & Job Resumes",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Autofill applications and create a one-page job-specific resume with unchanged original bullets.",
   "minimum_chrome_version": "120",
   "permissions": [

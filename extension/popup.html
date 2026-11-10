@@ -19,7 +19,7 @@
     <div class="toolbar"><button id="generate-resume">Generate resume</button><button id="detect-job" class="secondary">Read page</button></div>
   </div>
   <div id="resume-status" class="status" role="status" aria-live="polite"></div>
-  <div id="resume-result" hidden><div id="resume-entries" class="muted"></div><div class="toolbar" style="margin-top:12px"><button id="view-resume">Preview & download</button><button id="regenerate" class="secondary">Regenerate</button></div></div>
+  <div id="resume-result" hidden><div id="resume-entries" class="muted"></div><div id="qualification-report"></div><div class="toolbar" style="margin-top:12px"><button id="view-resume">Preview & download</button><button id="regenerate" class="secondary">Regenerate</button></div></div>
   <details id="resume-history"><summary>Resume history</summary><div id="history-list" class="muted" style="margin-top:12px"></div><button id="refresh-history" class="quiet">Refresh history</button></details>
   <button id="sign-out" class="quiet" hidden>Sign out</button>
 </section>
@@ -33,4 +33,4 @@
 
 
 <footer>Profile stored locally · Runs when you click<br>Review the application and submit it yourself.</footer>
-<script src="schema.js"></script><script src="engine.js"></script><script src="popup.js"></script><script src="resumes.js"></script></body></html>
+<script src="schema.js"></script><script src="engine.js"></script><script src="popup.js"></script><script src="qualification-ui.js"></script><script src="resumes.js"></script></body></html>
