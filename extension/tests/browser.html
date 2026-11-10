@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><title>ApplyFlow browser integration tests</title></head><body>
+<label>First name<input id="first" name="firstName"></label>
+<label>Last name<input id="last" name="lastName"></label>
+<label>Email<input id="email" type="email" value="existing@example.com"></label>
+<label>Country<select id="country"><option value="">Choose</option><option value="US">United States</option></select></label>
+<label>Professional summary<textarea id="summary"></textarea></label>
+<label>Password<input id="password" type="password"></label>
+<label>City<input id="hidden" style="display:none"></label>
+<label>City<input id="disabled" disabled></label>
+<label>City<input id="readonly" readonly></label>
+<label>Phone country code<input id="code"></label>
+<label>Phone<input id="combo" role="combobox"></label>
+<label>Why are you interested in this role?<textarea id="why"></textarea></label>
+<label>City<input id="city"></label>
+<label>ZIP code<input id="zip"></label>
+<fieldset><legend>Reference</legend><label>First name<input id="ref"></label></fieldset>
+<fieldset><legend>Education 1</legend><label>School<input id="school1"></label></fieldset>
+<fieldset><legend>Education 2</legend><label>School<input id="school2"></label></fieldset>
+<div id="shadow"></div><pre id="output">RUNNING</pre>
+<script src="../schema.js"></script>
+<script src="../engine.js"></script>
+<script src="../content.js"></script>
+<script src="browser-test.js"></script></body></html>
