@@ -4,7 +4,7 @@ import concurrent.futures,datetime,hashlib,hmac,json,re,secrets,threading,time,u
 from http.server import ThreadingHTTPServer,BaseHTTPRequestHandler
 from urllib.parse import urlparse
 from .config import settings
-from .resume import generate,validate_library,library_hash,digest,VERSION
+from .resume import generate,validate_library,library_hash,digest,VERSION,MATCHING_VERSION
 from .store import Cloud,CloudError,Local
 
 class APIError(Exception):
@@ -126,7 +126,7 @@ def handler(service):
         def dispatch(self):
             try:
                 self.origin();path=urlparse(self.path).path
-                if path=='/health' and self.command=='GET':return self.send(200,{'ok':True,'mode':'local' if service.config['local'] else 'supabase'})
+                if path=='/health' and self.command=='GET':return self.send(200,{'ok':True,'mode':'local' if service.config['local'] else 'supabase','matching_version':MATCHING_VERSION})
                 uid,store=service.auth(self.headers.get('Authorization',''))
                 if path=='/bootstrap' and self.command=='GET':return self.send(200,{'profile':service.profile,'source_hash':service.source_hash,'entry_count':len(service.lib['entries']),'mode':'local' if service.config['local'] else 'supabase'})
                 if path=='/resumes' and self.command=='POST':

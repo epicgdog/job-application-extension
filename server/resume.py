@@ -1,6 +1,6 @@
 """Deterministic whole-entry ranking and a measured, immutable-text PDF renderer."""
 from __future__ import annotations
-import hashlib, io, itertools, json, math, re
+import hashlib, io, json, re
 from pathlib import Path
 from xml.sax.saxutils import escape
 from reportlab import __file__ as reportlab_file
@@ -13,7 +13,9 @@ from reportlab.pdfgen.canvas import Canvas
 from pypdf import PdfReader
 import pdfplumber
 
-VERSION = '2'
+from .matching import prepare, objective, report, VERSION as MATCHING_VERSION
+
+VERSION = '3'
 PAGE_W, PAGE_H, MARGIN = 612, 792, 36
 WIDTH, HEIGHT = PAGE_W - 2*MARGIN, PAGE_H - 2*MARGIN
 FONT_DIR = Path(reportlab_file).parent/'fonts'
@@ -99,26 +101,8 @@ def block(entry):
 def height(parts):
     return sum(item.wrap(WIDTH,10000)[1] for item in parts)
 
-def tokens(text):
-    text=text.lower().replace('javascript/typescript','javascript typescript')
-    text=re.sub(r'\bjs\b','javascript',text)
-    text=re.sub(r'\bpostgres\b','postgresql',text)
-    text=re.sub(r'\breact\.js\b','react',text)
-    return set(re.findall(r'[a-z][a-z0-9+#.-]*',text)) - set('the a an to of and for in on with is by are as at or be this that from your you our we will can have work team using role skills experience requirements required software engineer engineering development developer'.split())
-
 def rank(lib,job):
-    # Plain text relevance only: no model or instruction execution.
-    wanted=tokens(job['description']); title=tokens(job.get('title',''))
-    docs=[tokens(json.dumps(e,ensure_ascii=False)) for e in lib['entries']]
-    n=len(docs)
-    result=[]
-    for entry,words in zip(lib['entries'],docs):
-        matches=wanted & words
-        score=sum(1+math.log((n+1)/(1+sum(t in d for d in docs))) for t in matches)
-        headline=tokens(entry.get('title','')+' '+entry.get('technologies_display',''))
-        score+=2*len(title & words)+1.5*len(wanted & headline)
-        result.append({'id':entry['id'],'score':round(score,4),'matched_terms':sorted(matches)[:24]})
-    return result
+    return prepare(lib,job)['ranking']
 
 def ordered(lib,ids,scores):
     selected=[e for e in lib['entries'] if e['id'] in ids]
@@ -142,25 +126,26 @@ def story(lib,entries):
     return result
 
 def select(lib,job):
-    ranked=rank(lib,job); scores={r['id']:r['score'] for r in ranked}
+    model=prepare(lib,job)
+    ranked=model['ranking']; scores={r['id']:r['score'] for r in ranked}
     costs=[height(block(e)) for e in lib['entries']]
     budget=HEIGHT-height(fixed(lib))
     heading_cost=height(section('Experience'))
-    best=(-1,0,[])
-    # Exhaustive search is bounded by the validated 20-entry maximum.
+    best_key=None;best_indices=[]
     for mask in range(1,1<<len(costs)):
         indices=[i for i in range(len(costs)) if mask & (1<<i)]
         if any(scores[lib['entries'][i]['id']]<=0 for i in indices):continue
         kinds={lib['entries'][i]['kind'] for i in indices}
         used=sum(costs[i] for i in indices)+heading_cost*len(kinds)
         if used>budget:continue
-        score=sum(scores[lib['entries'][i]['id']] for i in indices)
-        # Prefer coverage across work and projects when scores are otherwise close.
-        score+=2 if len(kinds)==2 else 0
-        if (score,-used)>(best[0],best[1]):best=(score,-used,indices)
-    if not best[2]:raise ValueError('No relevant complete entry fits one page. Provide a fuller job description or review your source layout.')
-    entries=ordered(lib,{lib['entries'][i]['id'] for i in best[2]},scores)
-    return entries,ranked
+        ids={lib['entries'][i]['id'] for i in indices}
+        # Required coverage dominates preferred coverage. Count each distinct
+        # qualification once, rather than stacking repeated words across entries.
+        key=(*objective(model,ids),-used)
+        if best_key is None or key>best_key:best_key=key;best_indices=indices
+    if not best_indices:raise ValueError('No relevant complete entry fits one page. Provide the required/preferred qualifications or review your source layout.')
+    entries=ordered(lib,{lib['entries'][i]['id'] for i in best_indices},scores)
+    return entries,ranked,report(model,{e['id'] for e in entries})
 
 def verify_pdf(data,lib,entries):
     reader=PdfReader(io.BytesIO(data))
@@ -183,7 +168,7 @@ def verify_pdf(data,lib,entries):
 def generate(lib,job):
     validate_library(lib)
     if len(job.get('description','').strip())<80:raise ValueError('Provide at least 80 characters of job description.')
-    entries,ranked=select(lib,job)
+    entries,ranked,qualification_report=select(lib,job)
     parts=story(lib,entries)
     if height(parts)>HEIGHT:raise ValueError('Selected entries exceed one-page layout.')
     output=io.BytesIO();canvas=Canvas(output,pagesize=(PAGE_W,PAGE_H),pageCompression=1)
@@ -195,4 +180,5 @@ def generate(lib,job):
     verify_pdf(data,lib,entries)
     return data,{'page_count':1,'template_version':VERSION,'selected_entry_ids':[e['id'] for e in entries],
         'selected_entries':[{'id':e['id'],'name':e.get('name',e.get('organization')),'title':e.get('title','Project')} for e in entries],
-        'bullet_hashes':{b['id']:b['sha256'] for e in entries for b in e['bullets']},'ranking':ranked,'pdf_hash':digest(data)}
+        'bullet_hashes':{b['id']:b['sha256'] for e in entries for b in e['bullets']},'ranking':[{k:v for k,v in row.items() if k!='strengths'} for row in ranked],
+        'matching_version':MATCHING_VERSION,'qualification_report':qualification_report,'pdf_hash':digest(data)}

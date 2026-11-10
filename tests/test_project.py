@@ -10,7 +10,7 @@ from server.store import Local
 from http.server import ThreadingHTTPServer
 
 LIB=json.loads((ROOT/'examples/resume-library.json').read_text())
-JOB={'title':'Backend engineer','company':'Fixture company','url':'https://example.com/jobs/backend','description':'Build Python FastAPI services and REST APIs with SQL, SQLite and PostgreSQL. Deploy Docker containers on AWS EC2 and S3 using Jenkins and GitHub Actions. Design schemas and reliable data pipelines and implement authentication and CI.'}
+JOB={'title':'Backend engineer','company':'Fixture company','url':'https://example.com/jobs/backend','description':'Required Qualifications\nExperience building Python FastAPI APIs with PostgreSQL and SQL.\nExperience using Docker and GitHub Actions.\nPreferred Qualifications\nFamiliarity with AWS, database design, and data pipelines.'}
 
 def config(directory):
     return {'local':True,'host':'127.0.0.1','port':0,'data':Path(directory),'library':ROOT/'examples/resume-library.json','profile':ROOT/'examples/profile.json','master':Path(directory)/'no-original.pdf','origins':['chrome-extension://fixture']}
@@ -35,7 +35,7 @@ class RendererTests(unittest.TestCase):
         lib=copy.deepcopy(LIB);lib['entries'][0]['bullets'][0]['text']+=' rewritten'
         with self.assertRaisesRegex(ValueError,'hash mismatch'):generate(lib,JOB)
     def test_relevance_varies_by_job(self):
-        game={**JOB,'title':'Game systems developer','description':'Build performant Roblox LuaU games using NPC systems, pathfinding, FPS raycasting, hit registration and client side rendering. Optimize large numbers of agents. Teach mixed-level students to ship mini games and debug Roblox game systems.'}
+        game={**JOB,'title':'Game systems developer','description':'Required Qualifications\nExperience with Roblox LuaU games, NPC pathfinding, and FPS raycasting.\nExperience debugging game systems.\nPreferred Qualifications\nPrior game workshop instruction experience.'}
         _,backend=generate(LIB,JOB);_,gaming=generate(LIB,game)
         self.assertIn('entry-06',gaming['selected_entry_ids'])
         self.assertNotEqual(backend['selected_entry_ids'],gaming['selected_entry_ids'])

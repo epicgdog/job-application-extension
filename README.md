@@ -6,7 +6,7 @@ A Chrome/Edge extension that fills application forms from a saved profile and bu
 
 - Review matched application fields before filling them, with manual match overrides and reusable saved answers.
 - Detect jobs from structured `JobPosting` data, or enter the title, company, and description manually.
-- Rank source entries by keyword relevance and select a combination that fits one page.
+- Match required/preferred qualifications to exact source evidence and select complete entries that fit one page.
 - Preserve every included bullet's wording and order; verify source hashes and PDF-extracted text.
 - Preview and download PDFs, reuse cached results, regenerate versions, and browse history.
 - Run locally without an account, or save privately using Supabase Auth, Postgres, and Storage.
@@ -35,7 +35,7 @@ The default setup uses fictional examples, loopback-only storage, and an automat
 ## Apply to a job
 
 1. Open the employer's job posting and click ApplyFlow.
-2. For a recognized single `JobPosting`, resume generation starts automatically. Otherwise, confirm the job title/company and paste its description. Descriptions require at least 80 characters.
+2. For a recognized single `JobPosting`, resume generation starts automatically. Otherwise, confirm the job title/company and paste its description. Descriptions require at least 80 characters and identifiable required/preferred qualifications or explicit requirement sentences.
 3. Review the selected entries, choose **Preview & download**, and attach the PDF through the employer's upload control.
 4. Use **Scan this page** to review and fill supported application fields. Existing field values are preserved unless you explicitly enable replacement.
 5. Review the complete application and submit it yourself.
@@ -95,17 +95,17 @@ It needs two test-user access tokens and an existing completed test resume. It v
 
 ## Preservation and page layout
 
-The ranker returns entry IDs, never replacement prose. The renderer keeps every bullet of each included entry and retains bullet order. It preserves contact details, education/coursework, and existing skills lines. It orders work experience chronologically and projects by relevance.
+The ranker extracts required and preferred qualifications, then returns source entry IDs and evidence references, never replacement prose. The renderer keeps every bullet of each included entry and retains bullet order. It preserves contact details, education/coursework, and existing skills lines. It orders work experience chronologically and projects by relevance.
 
 Selection searches combinations of complete entries using measured layout heights. The template uses a single US Letter page, 10 pt body text, 36 pt margins, embedded fonts, selectable text, and links. Generation fails if bullet hashes differ, PDF text is missing/changed/reordered/duplicated, content exceeds page bounds, or no useful complete entry fits. It never truncates bullets or shrinks them below those bounds.
 
-Ranking is deterministic keyword matching with title/technology weighting and a small synonym map. Review its choices for each job. Duplicate identical bullet text across selected entries is rejected by the current PDF integrity check; distinguish source entries or omit duplicates when preparing the library.
+Required qualification coverage takes priority over preferred coverage. Technical requirements outweigh generic transferable skills, repeated mentions do not accumulate credit, and employer names/IDs are excluded. The report shows original qualification text and exact source evidence, distinguishes included/omitted/listed evidence, and flags gaps or manual-review conditions. This is a conservative local rules model, not an ATS or eligibility score. No LLM key is needed. Read [the research and matching design](docs/matching-research.md) for sources, weights, and limitations. Review its choices for each job. Duplicate identical bullet text across selected entries is rejected by the current PDF integrity check; distinguish source entries or omit duplicates when preparing the library.
 
 ## History and failure recovery
 
 Job metadata/description, library hash, and template version determine the cache key. Explicit regeneration creates a new immutable artifact. Editing job details hides a prior result until a new generation completes.
 
-The backend continues submitted work when the popup closes. Reopen the popup/history to check its status. Completed local/cloud history is durable; unfinished jobs can fail on a server restart. Pending jobs older than ten minutes are marked failed when queried and can be regenerated.
+The backend continues submitted work when the popup closes. Reopen the popup/history to check its status. Completed local/cloud history is durable; unfinished jobs can fail on a server restart. Matching version changes invalidate the generation cache; older resumes remain in history and can be regenerated for a qualification report. Pending jobs older than ten minutes are marked failed when queried and can be regenerated.
 
 Failed uploads are not reported as saved. When a completion response is lost, the worker checks metadata before deleting a PDF. If a network failure prevents determining the outcome, it leaves the object intact. This can leave an orphaned private object that needs inspection against its UUID history row before removal.
 
