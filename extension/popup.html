@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ApplyFlow</title><link rel="stylesheet" href="ui.css"></head>
+<body class="popup"><header><div class="brand"><span class="mark">af</span>ApplyFlow</div><button id="profile" class="quiet">Edit profile ↗</button></header>
+<div class="eyebrow">Your next chapter</div><h1>Less typing.<br>More possibilities.</h1><p>Bring your profile to your next application.</p>
+<div class="toolbar"><button id="scan">Scan this page</button><button id="demo" class="secondary">Try demo</button></div>
+<div id="status" class="status" role="status" aria-live="polite">Save your profile, then open an application to begin.</div>
+<section id="preview" hidden><div class="toolbar"><h2 id="count">Review matches</h2><button id="toggle" class="quiet">Deselect all</button></div>
+<p class="muted">Check each match. You can change which saved detail fills a field.</p>
+<div id="fields" class="card"></div><label class="check"><input type="checkbox" id="overwrite">Replace existing field values</label>
+<button id="fill" style="width:100%;margin-top:14px">Fill selected fields</button></section>
+<footer>Profile stored locally · Runs when you click<br>Review the application and submit it yourself.</footer>
+<script src="schema.js"></script><script src="engine.js"></script><script src="popup.js"></script></body></html>

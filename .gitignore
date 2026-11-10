@@ -1,0 +1,14 @@
+# Secrets and private application data
+.env
+.env.*
+!.env.example
+private-data/
+.data/
+extension/config.js
+*.pdf
+# Dependencies, runtime artifacts, and editor files
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
